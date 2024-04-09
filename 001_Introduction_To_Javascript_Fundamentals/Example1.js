@@ -71,4 +71,59 @@ var x = 5;
 
 //Example1: Function hoisting
 console.log("Example1: Function hoisting");
+//In this example, the greet function is called before it is declared. Due to function hoisting,
+//JS moves the declaration to the top during the compilation phase, making this call valid
+
+//calling the function before its declaration
+greet();
+
+//function declaration
+function greet(){
+    console.log("Hello, world!");
+}
+//Output: Hello, world!
+
+//Example2: Variable hoisting with var
+console.log("Example2: Variable hoisting with var");
+//Variable declarations(but not initializations) using var are hoisted to the top of their scope, which can lead to
+//unexpected results.
+console.log(message); //Output: undefined
+
+var message = "Hoisting is here!";
+//The above code behaves as if written like this:
+//var message;
+//console.log(message);
+//message = "Hoisting is here!";
+
+//Example3: Hoisting limitations with let and const
+console.log("Example3: Hoisting limitations with let and const");
+//Even though let and const declarations are hoisted, trying to access name before its declaration throws a ReferenceError
+//because let and const variables are in a TDZ(Temporal Dead Zone) until their declaration is evaluated
+//console.log(name);
+//let name = 'Javascript';
+
+//The role of the void operator
+console.log("The role of the void operator");
+//The void operator evaluates an expression and then returns undefined. This can be useful in scenarios
+//where you need to ensure no value is returned
+
+void function(){
+    console.log("This will run, but return undefined");
+}
+
+console.log(void(0)); //This will output undefined
+
+console.log("Rounding a Number to two decimal places");
+console.log("Example1: Using toFixed() to round a number");
+
+const number = 2.34567;
+const rounded = number.toFixed(2);
+console.log(rounded); //Output: 2.35
+
+//Rounding the above string back to a number
+const roundedNumber1 = parseFloat(number.toFixed(2));
+console.log(roundedNumber1); //Output: 2.35
+
+const roundedNumber2 = Number(number.toFixed(2));
+console.log(roundedNumber2); //Output: 2.35
 
