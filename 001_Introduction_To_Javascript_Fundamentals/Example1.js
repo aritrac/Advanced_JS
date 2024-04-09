@@ -127,3 +127,108 @@ console.log(roundedNumber1); //Output: 2.35
 const roundedNumber2 = Number(number.toFixed(2));
 console.log(roundedNumber2); //Output: 2.35
 
+console.log("Example2: Using Math.round()");
+//This approach multiplies the number by 100 to shift the decimal two places to the right,
+//rounds it and then divides it by 100 to shift the decimal back to its original position
+const number2 = 2.34567;
+const rounded2 = Math.round(number * 100) / 100;
+console.log(rounded2); //Output: 2.35
+
+console.log("Example3: Using a Custom Rounding Function");
+//This function uses the scientific notation (e-notation) to round the number. It adds 'e+2'
+//to the number to move the decimal point two places to the right before rounding, then
+//ubstracts "e-2" to move it back, effectively rounding the number to two decimal places. The unary
+//plus (+) at the beginning converts the string result back into a number
+function roundToTwo(num){
+    return +(Math.round(num + "e+2") + "e-2");
+}
+const number3 = 2.34567;
+const rounded3 = roundToTwo(number3);
+console.log(rounded3); //Output: 2.35
+
+console.log("Checking if a Number is Finite and Not NaN");
+//The isFinite function determines whether a number is a finite, legal number
+const num = 1/0;
+console.log(isFinite(num)); //false
+console.log(isFinite(2/0)); //false
+console.log(isFinite(20/5)); //true
+console.log(isFinite(NaN)); //false
+
+console.log("Detecting a User's Device Type");
+console.log(navigator.userAgent);
+
+console.log("Declaring an Immutable Variable with ES6");
+//the const keyword is used to declare variables that are not supposed to be reassigned. Declaring a variable
+//with const makes it immutable in the sense that you cannot reassign it to a different value. However, it's important
+//to note that if the variable holds an object or an array, the contents of the object or array can still be modified
+//unless you use other means to make them immutable.
+
+console.log("Example1: Declaring a Primitive Value");
+const pi = 3.14159;
+console.log(pi);
+//Trying to reassign the value of pi will result in an error
+//pi = 3.14; //TypeError: Assignment to constant variable
+
+console.log("Example2: Immutable Array (Sort of)")
+const colors = ['red','green','blue'];
+console.log(colors);//Output: ['red','green','blue']
+
+//You can modify the contents of the array
+colors.push('yellow');
+console.log(colors); //Output: ['red','green','blue','yellow']
+//But you cannot reassign the array
+//colors = ['purple','orange'] //TypeError: Assignment to const variable
+
+//console.log("Example3: Immutable Object (Sort of)")
+const car = {
+    make: "Toyota",
+    model: "Camry"
+};
+console.log(car); //Output: {make: "Toyota", model: "Camry"}
+//You can modify the properties of the object
+car.year = 2020;
+console.log(car); //Output: {make: "Toyota", model: "Camry", year: 2020}
+//but you cannot reassign the object
+//car = {make: 'Honda', model:'Accord'}; //TypeError: Assignment to constant variable
+
+console.log("Checking for a property in an Object")
+const obj = {key: 'value'};
+console.log(obj.hasOwnProperty('key')); //true
+console.log('key' in obj); //true
+
+console.log("Example1: Using the in operator");
+const car2 = {
+    make: 'Toyota',
+    model: 'Camry'
+}
+
+console.log('make' in car2); //Output: true
+console.log('year' in car2); //Output: false
+
+console.log("Example2: Using hasOwnProperty");
+const car3 = {
+    make: 'Toyota',
+    model: 'Camry'
+}
+
+console.log(car3.hasOwnProperty('make')); //Output: true
+console.log(car3.hasOwnProperty('toString')); //Output: false
+
+console.log("Example3: Using the ptional chaining operator (?.) and undefined check")
+const vehicle = {
+    specs: {
+        engine: 'V6',
+        horsepower: 268
+    }
+}
+
+console.log(vehicle.specs?.engine !== undefined); //Output: true
+console.log(vehicle.specs?.mileage !== undefined); //Output: false
+
+console.log("comparison of truthy values")
+console.log(!!"false"); //Output: true
+console.log(!![]); //Output: true
+
+
+
+
